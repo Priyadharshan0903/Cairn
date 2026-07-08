@@ -24,7 +24,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 500;
-  padding: 8px 20px 6px;
+  padding: 8px 16px 6px;
   border-radius: 14px;
   transition: color 0.15s ease, background 0.15s ease;
 }

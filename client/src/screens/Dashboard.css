@@ -15,6 +15,28 @@
 .slipping {
   color: var(--terracotta);
 }
+.dash-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+.add-goal-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  color: #fdf3ee;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+.add-goal-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.92;
+}
 .avatar {
   flex-shrink: 0;
   width: 40px;
@@ -25,7 +47,6 @@
   color: #f6efe4;
   font-weight: 600;
   font-size: 15px;
-  margin-top: 4px;
   display: grid;
   place-items: center;
   text-decoration: none;
