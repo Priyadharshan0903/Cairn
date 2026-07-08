@@ -1,0 +1,143 @@
+.detail-loading {
+  display: grid;
+  place-items: center;
+  padding: 80px 0;
+}
+.detail-head {
+  position: relative;
+}
+.detail-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 6px;
+}
+.dots {
+  border: none;
+  background: none;
+  font-size: 22px;
+  color: var(--muted);
+  line-height: 1;
+  padding: 4px 8px;
+}
+.detail-range {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 6px;
+}
+.goal-menu {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  z-index: 20;
+  padding: 6px;
+  min-width: 180px;
+  box-shadow: var(--shadow-float);
+}
+.goal-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 11px 12px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.goal-menu button:hover {
+  background: var(--surface-2);
+}
+.goal-menu .danger {
+  color: var(--terracotta);
+}
+
+.pace-card {
+  padding: 22px 20px 18px;
+  margin-top: 18px;
+  background: var(--surface-2);
+}
+.pace-figures {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+.pace-right {
+  text-align: right;
+}
+.pace-big {
+  font-family: var(--font-serif);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}
+.pace-big span {
+  font-size: 20px;
+  margin-left: 1px;
+}
+.pace-actual {
+  color: var(--terracotta);
+}
+.pace-cap {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.pace-badge-row {
+  margin-top: 18px;
+}
+.pace-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+.pace-flag-behind {
+  background: var(--terracotta-wash);
+  color: var(--terracotta);
+}
+.pace-flag-ahead {
+  background: var(--sage-wash);
+  color: var(--sage-deep);
+}
+.pace-flag-ontrack {
+  background: var(--surface-3);
+  color: var(--muted);
+}
+
+.task-card {
+  padding: 6px 18px 14px;
+}
+.no-tasks {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 18px 0;
+  text-align: center;
+}
+.add-task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 6px;
+  margin-top: 4px;
+}
+.add-task-input {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 14px 0;
+  font-size: 15px;
+  color: var(--ink);
+}
+.add-task-input::placeholder {
+  color: var(--muted);
+}
+.add-task-input:focus {
+  outline: none;
+}

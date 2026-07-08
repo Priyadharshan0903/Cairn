@@ -1,0 +1,14 @@
+.heatmap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.cell {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: var(--surface-3);
+}
+.cell-on {
+  background: var(--sage);
+}

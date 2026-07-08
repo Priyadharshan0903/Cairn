@@ -1,0 +1,53 @@
+.log-day {
+  margin-bottom: 20px;
+}
+.log-day-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 2px 8px;
+}
+.log-count {
+  font-size: 12px;
+  color: var(--muted-2);
+}
+.log-list {
+  padding: 6px 18px;
+}
+.log-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.log-item:first-child {
+  border-top: none;
+}
+.log-check {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: var(--sage);
+  color: #f6efe4;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+}
+.log-body {
+  flex: 1;
+  min-width: 0;
+}
+.log-title {
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.log-goal {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.log-emote {
+  font-size: 18px;
+}

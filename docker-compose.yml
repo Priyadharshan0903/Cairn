@@ -1,0 +1,14 @@
+# Optional: run a real persistent MongoDB. `docker compose up -d`, then set
+# MONGO_URI=mongodb://localhost:27017/cairn in server/.env
+services:
+  mongo:
+    image: mongo:7
+    container_name: cairn-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - cairn-mongo-data:/data/db
+    restart: unless-stopped
+
+volumes:
+  cairn-mongo-data:

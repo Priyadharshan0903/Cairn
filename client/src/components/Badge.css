@@ -1,0 +1,57 @@
+.chip {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--surface-2);
+}
+.chip-sand {
+  color: #8a6a2e;
+  background: var(--sand-wash);
+}
+.chip-sage {
+  color: var(--sage-deep);
+  background: var(--sage-wash);
+}
+
+.pace {
+  font-size: 13px;
+  font-weight: 500;
+}
+.pace-terracotta {
+  color: var(--terracotta);
+}
+.pace-sage {
+  color: var(--sage-deep);
+}
+.pace-muted {
+  color: var(--muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--ink-soft);
+}
+.badge-terracotta {
+  color: var(--terracotta);
+  background: var(--terracotta-wash);
+}
+.badge-sage {
+  color: var(--sage-deep);
+  background: var(--sage-wash);
+}
+.badge-sand {
+  color: #8a6a2e;
+  background: var(--sand-wash);
+}

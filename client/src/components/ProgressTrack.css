@@ -1,0 +1,36 @@
+.track-wrap {
+  position: relative;
+  width: 100%;
+}
+.track {
+  position: relative;
+  width: 100%;
+  background: var(--surface-3);
+  border-radius: 999px;
+  overflow: visible;
+}
+.track-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.track-marker {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 2.5px;
+  border-radius: 2px;
+  background: var(--ink);
+  transform: translateX(-50%);
+  transition: left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.track-marker-label {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  white-space: nowrap;
+}

@@ -1,0 +1,50 @@
+.dash-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.slipping {
+  color: var(--terracotta);
+}
+.avatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: var(--sage);
+  color: #f6efe4;
+  font-weight: 600;
+  font-size: 15px;
+  margin-top: 4px;
+}
+.goal-list {
+  padding: 6px 18px;
+}
+.new-goal-btn {
+  margin-top: 16px;
+  text-decoration: none;
+  text-align: center;
+  color: var(--muted);
+}
+.new-goal-btn:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+
+.empty-state {
+  padding: 34px 26px;
+  text-align: center;
+}
+.empty-state h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+.empty-state p {
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.55;
+  max-width: 320px;
+  margin: 0 auto 20px;
+}

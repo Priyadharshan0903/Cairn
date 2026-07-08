@@ -1,0 +1,32 @@
+.emote-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+.emote-lead {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  margin-right: 4px;
+}
+.emote {
+  border: none;
+  background: transparent;
+  font-size: 17px;
+  line-height: 1;
+  padding: 5px;
+  border-radius: 8px;
+  filter: grayscale(0.7) opacity(0.55);
+  transition: filter 0.15s ease, background 0.15s ease;
+}
+.emote:hover {
+  filter: grayscale(0) opacity(1);
+  background: var(--surface-2);
+}
+.emote-active {
+  filter: none;
+  background: var(--surface-2);
+}

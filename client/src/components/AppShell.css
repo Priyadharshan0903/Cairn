@@ -1,0 +1,54 @@
+.shell {
+  min-height: 100%;
+}
+.shell-main {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 24px 20px 110px;
+}
+
+/* content wrappers used across screens */
+.screen-eyebrow {
+  margin-bottom: 8px;
+}
+.screen-title {
+  font-size: 30px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.screen-sub {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+.section-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 26px 2px 6px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+.back-link:hover {
+  color: var(--ink);
+}
+
+@media (min-width: 900px) {
+  .shell {
+    display: flex;
+  }
+  .shell-main {
+    flex: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 32px 64px;
+  }
+}

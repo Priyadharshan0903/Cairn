@@ -1,0 +1,59 @@
+.new-goal-form .field {
+  margin-bottom: 22px;
+}
+.type-grid {
+  display: grid;
+  gap: 8px;
+}
+.type-opt {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 13px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.type-opt-on {
+  border-color: var(--terracotta);
+  background: var(--terracotta-wash);
+}
+.type-label {
+  font-weight: 600;
+  font-size: 15px;
+}
+.type-hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+.time-grid,
+.rhythm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.mini-label {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.rhythm-opt {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.rhythm-on {
+  border-color: transparent;
+  background: var(--terracotta);
+  color: #fdf3ee;
+}
+.first-task {
+  margin-bottom: 8px;
+}
