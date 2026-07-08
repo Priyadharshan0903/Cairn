@@ -57,3 +57,13 @@
 .first-task {
   margin-bottom: 8px;
 }
+.add-task-btn {
+  width: 100%;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 12px;
+}
+.add-task-btn:hover {
+  color: var(--terracotta);
+  border-color: var(--terracotta-soft);
+}

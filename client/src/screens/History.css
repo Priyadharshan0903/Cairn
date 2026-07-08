@@ -56,6 +56,15 @@
   color: var(--muted);
   margin-top: 6px;
 }
+.hist-activity-link {
+  margin-top: 24px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.hist-activity-link:hover {
+  color: var(--terracotta);
+  border-color: var(--terracotta-soft);
+}
 .hist-quote {
   margin: 12px 0 0;
   font-family: var(--font-serif);

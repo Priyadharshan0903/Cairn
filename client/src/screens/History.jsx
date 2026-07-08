@@ -59,7 +59,7 @@ export function History() {
         </div>
       )}
 
-      <Link to="/activity" className="btn btn-ghost btn-block" style={{ marginTop: 18, textAlign: 'center', textDecoration: 'none', color: 'var(--muted)' }}>
+      <Link to="/activity" className="btn btn-ghost btn-block hist-activity-link">
         View day-by-day activity log →
       </Link>
     </div>

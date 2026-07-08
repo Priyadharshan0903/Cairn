@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useGoal, useUpdateGoal, useDeleteGoal } from '../hooks/useGoals.js';
 import { useCreateTask, useUpdateTask } from '../hooks/useTasks.js';
@@ -18,7 +18,6 @@ export function GoalDetail() {
   const updateGoal = useUpdateGoal();
   const deleteGoal = useDeleteGoal();
 
-  const [newTask, setNewTask] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
   if (isLoading) {
@@ -36,13 +35,6 @@ export function GoalDetail() {
     return <CompletionCard goal={goal} onBack={() => navigate('/history')} />;
   }
 
-  function addTask(e) {
-    e.preventDefault();
-    const title = newTask.trim();
-    if (!title) return;
-    createTask.mutate({ goalId: id, title, date: today });
-    setNewTask('');
-  }
 
   return (
     <div>
@@ -119,16 +111,57 @@ export function GoalDetail() {
           />
         ))}
 
-        <form className="add-task" onSubmit={addTask}>
-          <input
-            className="add-task-input"
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            placeholder="+ Add a task for today"
-          />
-          {newTask.trim() && <button className="link">Add</button>}
-        </form>
+        <AddTask onAdd={(title) => createTask.mutate({ goalId: id, title, date: today })} />
       </section>
     </div>
+  );
+}
+
+/** "+ Add a task" — a full-width button that expands into a focused input. */
+function AddTask({ onAdd }) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState('');
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (open) inputRef.current?.focus();
+  }, [open]);
+
+  function submit(e) {
+    e.preventDefault();
+    const title = value.trim();
+    if (!title) return close();
+    onAdd(title);
+    setValue('');
+    inputRef.current?.focus();
+  }
+  function close() {
+    setValue('');
+    setOpen(false);
+  }
+
+  if (!open) {
+    return (
+      <button type="button" className="btn btn-ghost add-task-trigger" onClick={() => setOpen(true)}>
+        + Add a task for today
+      </button>
+    );
+  }
+
+  return (
+    <form className="add-task" onSubmit={submit}>
+      <input
+        ref={inputRef}
+        className="add-task-input"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        onBlur={() => !value.trim() && close()}
+        onKeyDown={(e) => e.key === 'Escape' && close()}
+        placeholder="What needs doing today?"
+      />
+      <button type="submit" className="add-task-go" disabled={!value.trim()}>
+        Add
+      </button>
+    </form>
   );
 }

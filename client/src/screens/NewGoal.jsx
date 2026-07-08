@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useCreateGoal } from '../hooks/useGoals.js';
+import { DatePicker } from '../components/DatePicker.jsx';
 import { todayStr } from '../lib/format.js';
 import './NewGoal.css';
 
@@ -96,14 +97,8 @@ export function NewGoal() {
         <div className="field">
           <label className="eyebrow">Timeframe</label>
           <div className="time-grid">
-            <div>
-              <span className="mini-label">Start</span>
-              <input className="input" type="date" value={start} onChange={(e) => setStart(e.target.value)} />
-            </div>
-            <div>
-              <span className="mini-label">Deadline</span>
-              <input className="input" type="date" value={deadline} onChange={(e) => setDeadline(e.target.value)} />
-            </div>
+            <DatePicker label="Start" value={start} onChange={setStart} />
+            <DatePicker label="Deadline" value={deadline} onChange={setDeadline} min={start} align="right" />
           </div>
         </div>
 
@@ -139,7 +134,7 @@ export function NewGoal() {
               placeholder={i === 0 ? 'Easy 5K recovery run' : 'Foam roll + stretch'}
             />
           ))}
-          <button type="button" className="link" onClick={() => setTasks((a) => [...a, ''])}>
+          <button type="button" className="btn btn-ghost add-task-btn" onClick={() => setTasks((a) => [...a, ''])}>
             + Add task
           </button>
         </div>
