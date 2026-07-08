@@ -11,6 +11,7 @@ export const createTaskSchema = z.object({
   title: z.string().trim().min(1, 'Task needs a title'),
   date: dateStr.default(todayStr()),
   note: z.string().default(''),
+  recurring: z.boolean().default(false),
 });
 
 export const updateTaskSchema = z.object({
@@ -18,6 +19,7 @@ export const updateTaskSchema = z.object({
   note: z.string().optional(),
   done: z.boolean().optional(),
   emote: z.enum(EMOTES).nullable().optional(),
+  recurring: z.boolean().optional(),
 });
 
 export const listTasks = asyncHandler(async (req, res) => {
@@ -30,7 +32,7 @@ export const listTasks = asyncHandler(async (req, res) => {
 });
 
 export const createTask = asyncHandler(async (req, res) => {
-  const { goalId, title, date, note } = req.body;
+  const { goalId, title, date, note, recurring } = req.body;
   const goal = await Goal.findOne({ _id: goalId, userId: req.user._id });
   if (!goal) return res.status(404).json({ error: 'Goal not found' });
 
@@ -41,6 +43,7 @@ export const createTask = asyncHandler(async (req, res) => {
     title,
     date,
     note,
+    recurring,
     position: count,
   });
   res.status(201).json({ task });

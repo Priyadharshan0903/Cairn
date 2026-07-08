@@ -41,7 +41,7 @@ export function History() {
       ) : (
         <div className="hist-list">
           {list.map((rec) => (
-            <div key={rec.id} className="card hist-card">
+            <Link key={rec.id} to={`/goals/${rec.id}`} className="card hist-card">
               <div className="hist-card-head">
                 <h3>{rec.title}</h3>
                 <span className={`hist-badge ${tab === 'completed' ? 'honored' : 'short'}`}>
@@ -50,11 +50,12 @@ export function History() {
               </div>
               <div className="hist-meta">
                 {rec.completedAt && <span>{shortDate(rec.completedAt)}</span>}
-                {rec.finishedEarlyDays > 0 && <span>· {rec.finishedEarlyDays} days early</span>}
+                {rec.finishedEarlyDays > 0 && <span>· {rec.finishedEarlyDays} {rec.finishedEarlyDays === 1 ? 'day' : 'days'} early</span>}
                 <span>· {rec.daysHitPct}% days hit</span>
               </div>
               {rec.reflection && <blockquote className="hist-quote">"{rec.reflection}"</blockquote>}
-            </div>
+              <span className="hist-view">View recap →</span>
+            </Link>
           ))}
         </div>
       )}

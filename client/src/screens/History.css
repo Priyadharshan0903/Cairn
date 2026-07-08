@@ -21,7 +21,21 @@
   gap: 12px;
 }
 .hist-card {
+  display: block;
   padding: 18px 20px;
+  text-decoration: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+a.hist-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-float);
+}
+.hist-view {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--terracotta);
 }
 .hist-card-head {
   display: flex;

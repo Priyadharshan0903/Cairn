@@ -4,6 +4,7 @@ import { Task } from '../models/Task.js';
 import { computePace } from '../lib/pace.js';
 import { asyncHandler } from '../middleware/error.js';
 import { todayStr } from '../lib/dates.js';
+import { ensureRecurringForDay } from '../lib/recurring.js';
 
 const isoDate = z.coerce.date();
 
@@ -50,6 +51,11 @@ export const listGoals = asyncHandler(async (req, res) => {
 export const getGoal = asyncHandler(async (req, res) => {
   const goal = await Goal.findOne({ _id: req.params.id, userId: req.user._id });
   if (!goal) return res.status(404).json({ error: 'Goal not found' });
+
+  // Carry recurring tasks forward into today before returning the list.
+  if (goal.status === 'active') {
+    await ensureRecurringForDay(goal._id, req.user._id, todayStr());
+  }
 
   const tasks = await Task.find({ goalId: goal._id }).sort({ date: -1, position: 1 });
   res.json({ goal: serializeGoal(goal), tasks });

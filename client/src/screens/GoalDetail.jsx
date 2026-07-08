@@ -108,10 +108,11 @@ export function GoalDetail() {
             task={task}
             onToggle={(done) => updateTask.mutate({ id: task.id, done })}
             onEmote={(emote) => updateTask.mutate({ id: task.id, emote })}
+            onToggleRecurring={() => updateTask.mutate({ id: task.id, recurring: !task.recurring })}
           />
         ))}
 
-        <AddTask onAdd={(title) => createTask.mutate({ goalId: id, title, date: today })} />
+        <AddTask onAdd={(title, recurring) => createTask.mutate({ goalId: id, title, date: today, recurring })} />
       </section>
     </div>
   );
@@ -121,6 +122,7 @@ export function GoalDetail() {
 function AddTask({ onAdd }) {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
+  const [recurring, setRecurring] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -131,12 +133,13 @@ function AddTask({ onAdd }) {
     e.preventDefault();
     const title = value.trim();
     if (!title) return close();
-    onAdd(title);
+    onAdd(title, recurring);
     setValue('');
     inputRef.current?.focus();
   }
   function close() {
     setValue('');
+    setRecurring(false);
     setOpen(false);
   }
 
@@ -149,19 +152,38 @@ function AddTask({ onAdd }) {
   }
 
   return (
-    <form className="add-task" onSubmit={submit}>
-      <input
-        ref={inputRef}
-        className="add-task-input"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onBlur={() => !value.trim() && close()}
-        onKeyDown={(e) => e.key === 'Escape' && close()}
-        placeholder="What needs doing today?"
-      />
-      <button type="submit" className="add-task-go" disabled={!value.trim()}>
-        Add
+    <div className="add-task-wrap">
+      <form className="add-task" onSubmit={submit}>
+        <input
+          ref={inputRef}
+          className="add-task-input"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onKeyDown={(e) => e.key === 'Escape' && close()}
+          placeholder="What needs doing today?"
+        />
+        <button type="submit" className="add-task-go" disabled={!value.trim()}>
+          Add
+        </button>
+      </form>
+      <button
+        type="button"
+        className={`repeat-toggle ${recurring ? 'repeat-on' : ''}`}
+        onClick={() => setRecurring((r) => !r)}
+      >
+        <RepeatIcon /> {recurring ? 'Repeats daily' : 'Repeat daily'}
       </button>
-    </form>
+    </div>
+  );
+}
+
+function RepeatIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 2l4 4-4 4" />
+      <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+      <path d="M7 22l-4-4 4-4" />
+      <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+    </svg>
   );
 }

@@ -28,6 +28,11 @@
   flex: 1;
   min-width: 0;
 }
+.task-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .task-title {
   font-size: 15px;
   color: var(--ink);
@@ -35,6 +40,25 @@
 }
 .task-done .task-title {
   color: var(--muted);
+}
+.task-repeat {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 2px;
+  color: var(--muted-2);
+  border-radius: 6px;
+  opacity: 0.55;
+  transition: color 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+}
+.task-repeat:hover {
+  opacity: 1;
+  background: var(--surface-2);
+}
+.task-repeat-on {
+  color: var(--sage-deep);
+  opacity: 1;
 }
 .task-note {
   font-size: 13px;

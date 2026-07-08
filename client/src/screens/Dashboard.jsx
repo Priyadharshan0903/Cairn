@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth.jsx';
 import { useGoals, useDashboard } from '../hooks/useGoals.js';
 import { StatRow, StatTile } from '../components/StatTile.jsx';
 import { SortableGoalList } from '../components/SortableGoalList.jsx';
-import { eyebrowDate, greeting } from '../lib/format.js';
+import { longDate, greeting } from '../lib/format.js';
 import './Dashboard.css';
 
 export function Dashboard() {
@@ -18,7 +18,7 @@ export function Dashboard() {
     <div>
       <header className="dash-head">
         <div>
-          <div className="eyebrow screen-eyebrow">{eyebrowDate()}</div>
+          <div className="dash-date">{longDate()}</div>
           <h1 className="screen-title">
             {greeting()}, {firstName}.
           </h1>

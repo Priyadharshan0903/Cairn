@@ -21,7 +21,9 @@ export function CompletionCard({ goal, onBack }) {
         <div className="eyebrow" style={{ color: '#e9ecdc' }}>Goal completed</div>
         <h1 className="complete-title">{goal.title}</h1>
         {c.finishedEarlyDays > 0 && (
-          <span className="complete-early">Finished {c.finishedEarlyDays} days early ⚡</span>
+          <span className="complete-early">
+            Finished {c.finishedEarlyDays} {c.finishedEarlyDays === 1 ? 'day' : 'days'} early ⚡
+          </span>
         )}
       </div>
 

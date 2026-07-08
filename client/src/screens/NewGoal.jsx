@@ -17,6 +17,13 @@ function plusDays(n) {
   return todayStr(d);
 }
 
+/** Add n days to a YYYY-MM-DD string, returning YYYY-MM-DD. */
+function addDaysStr(dateStr, n) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  const dt = new Date(y, m - 1, d + n);
+  return todayStr(dt);
+}
+
 export function NewGoal() {
   const navigate = useNavigate();
   const createGoal = useCreateGoal();
@@ -45,7 +52,7 @@ export function NewGoal() {
     e.preventDefault();
     setError('');
     if (!title.trim()) return setError('Give your goal a name.');
-    if (new Date(deadline) <= new Date(start)) return setError('Deadline must be after the start date.');
+    if (new Date(deadline) < new Date(start)) return setError('Deadline can’t be before the start date.');
 
     try {
       const goal = await createGoal.mutateAsync({
@@ -99,6 +106,26 @@ export function NewGoal() {
           <div className="time-grid">
             <DatePicker label="Start" value={start} onChange={setStart} />
             <DatePicker label="Deadline" value={deadline} onChange={setDeadline} min={start} align="right" />
+          </div>
+          <div className="duration-chips">
+            {[
+              { label: 'Just today', days: 0 },
+              { label: '1 week', days: 7 },
+              { label: '30 days', days: 30 },
+              { label: '90 days', days: 90 },
+            ].map((p) => {
+              const active = deadline === addDaysStr(start, p.days);
+              return (
+                <button
+                  type="button"
+                  key={p.label}
+                  className={`duration-chip ${active ? 'duration-chip-on' : ''}`}
+                  onClick={() => setDeadline(addDaysStr(start, p.days))}
+                >
+                  {p.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 

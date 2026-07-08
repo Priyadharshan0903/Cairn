@@ -13,6 +13,7 @@ const taskSchema = new mongoose.Schema(
     doneAt: { type: Date },
     emote: { type: String, enum: [...EMOTES, null], default: null },
     position: { type: Number, default: 0 },
+    recurring: { type: Boolean, default: false }, // repeats every day (e.g. "brush teeth")
   },
   { timestamps: true }
 );
