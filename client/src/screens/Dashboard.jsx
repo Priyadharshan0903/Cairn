@@ -7,7 +7,7 @@ import { longDate, greeting } from '../lib/format.js';
 import './Dashboard.css';
 
 export function Dashboard() {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const goals = useGoals();
   const stats = useDashboard();
 
@@ -36,9 +36,9 @@ export function Dashboard() {
             </p>
           )}
         </div>
-        <button className="avatar" onClick={logout} title="Sign out">
+        <Link to="/profile" className="avatar" title="Profile & settings">
           {firstName[0]?.toUpperCase()}
-        </button>
+        </Link>
       </header>
 
       {stats.data && (

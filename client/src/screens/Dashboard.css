@@ -26,6 +26,13 @@
   font-weight: 600;
   font-size: 15px;
   margin-top: 4px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  transition: transform 0.12s ease;
+}
+.avatar:hover {
+  transform: scale(1.05);
 }
 .goal-list {
   padding: 6px 18px;

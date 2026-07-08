@@ -6,7 +6,7 @@
   z-index: 30;
   display: flex;
   justify-content: space-around;
-  background: rgba(251, 248, 241, 0.92);
+  background: var(--surface);
   backdrop-filter: saturate(1.2) blur(10px);
   border-top: 1px solid var(--line);
   padding: 8px 0 calc(8px + env(safe-area-inset-bottom));

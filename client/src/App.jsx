@@ -8,6 +8,9 @@ import { NewGoal } from './screens/NewGoal.jsx';
 import { History } from './screens/History.jsx';
 import { ActivityLog } from './screens/ActivityLog.jsx';
 import { Trails } from './screens/Trails.jsx';
+import { Profile } from './screens/Profile.jsx';
+import { ThemeSettings } from './screens/ThemeSettings.jsx';
+import { GoPro } from './screens/GoPro.jsx';
 
 function FullLoader() {
   return (
@@ -48,6 +51,9 @@ export function App() {
         <Route path="/history" element={<History />} />
         <Route path="/activity" element={<ActivityLog />} />
         <Route path="/trails" element={<Trails />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/theme" element={<ThemeSettings />} />
+        <Route path="/upgrade" element={<GoPro />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
