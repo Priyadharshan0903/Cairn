@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import fs from 'node:fs';
 import { env, EMBEDDED_DB_PATH } from './env.js';
 
+// The database name Cairn always uses. Passed explicitly to mongoose so we
+// connect to `cairn` regardless of whether MONGO_URI includes a db in its path.
+const DB_NAME = 'cairn';
+
 let memoryServer = null;
 
 /**
@@ -23,16 +27,18 @@ export async function connectDB() {
     const { MongoMemoryServer } = await import('mongodb-memory-server');
     fs.mkdirSync(EMBEDDED_DB_PATH, { recursive: true });
     memoryServer = await MongoMemoryServer.create({
-      instance: { dbPath: EMBEDDED_DB_PATH, storageEngine: 'wiredTiger', dbName: 'cairn' },
+      instance: { dbPath: EMBEDDED_DB_PATH, storageEngine: 'wiredTiger', dbName: DB_NAME },
     });
-    uri = memoryServer.getUri('cairn');
+    uri = memoryServer.getUri(DB_NAME);
     console.log('→ Using embedded MongoDB (persisted to .mongo-data)');
   } else {
     console.log('→ Using MongoDB at', uri.replace(/\/\/[^@]*@/, '//***@'));
   }
 
   mongoose.set('strictQuery', true);
-  await mongoose.connect(uri);
+  // Force the db name so a MONGO_URI without one (or with a different one) still
+  // lands in `cairn` rather than falling back to `test`.
+  await mongoose.connect(uri, { dbName: DB_NAME });
   return uri;
 }
 
