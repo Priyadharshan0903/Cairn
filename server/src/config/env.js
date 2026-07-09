@@ -3,9 +3,14 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-// Load .env from the server root regardless of cwd. `override` lets the file
-// win over ambient shell vars (e.g. a stray PORT) so the dev setup is deterministic.
-dotenv.config({ path: path.resolve(__dirname, '../../.env'), override: true });
+// Load .env from the server root regardless of cwd. In development `override`
+// lets the file win over ambient shell vars (e.g. a stray PORT) so the dev setup
+// is deterministic. In production we must NOT override — a stray .env in the
+// deploy image would otherwise clobber real platform vars like MONGO_URI.
+dotenv.config({
+  path: path.resolve(__dirname, '../../.env'),
+  override: process.env.NODE_ENV !== 'production',
+});
 
 export const env = {
   MONGO_URI: process.env.MONGO_URI || '',
