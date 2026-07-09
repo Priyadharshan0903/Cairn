@@ -1,13 +1,11 @@
-/** The Cairn stone-stack mark. `tone` sets the stone color. */
+/** The Cairn ember mark — a single flame. `tone` sets the flame color. */
 export function CairnMark({ size = 28, tone = '#f6efe4' }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden>
-      <g fill={tone}>
-        <ellipse cx="24" cy="37" rx="15" ry="5.5" />
-        <ellipse cx="24" cy="26.5" rx="11.5" ry="5" />
-        <ellipse cx="24" cy="17.5" rx="8" ry="4" />
-        <ellipse cx="24" cy="10.5" rx="5" ry="3" />
-      </g>
+    <svg width={size} height={size} viewBox="0 0 92 106" fill="none" aria-hidden>
+      <path
+        d="M46 4 C64 30 84 40 84 68 A38 38 0 1 1 8 68 C8 48 22 44 28 30 C34 46 40 44 44 36 C50 46 46 54 40 58 C48 60 54 54 54 46 C66 54 70 60 70 70 A24 24 0 1 1 22 70 C22 56 34 52 46 4 Z"
+        fill={tone}
+      />
     </svg>
   );
 }
