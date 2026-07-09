@@ -27,5 +27,6 @@ export default defineConfig({
     proxy: {
       '/api': { target: 'http://localhost:4000', changeOrigin: true },
     },
+    allowedHosts: ["cairn-production-1.up.railway.app"]
   },
 });
