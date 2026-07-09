@@ -13,7 +13,9 @@ export default defineConfig({
         cleanupOutdatedCaches: true,
         clientsClaim: true,
         skipWaiting: true,
+        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
       },
+      includeAssets: ['icon.svg', 'apple-touch-icon.png', 'favicon-32x32.png'],
       manifest: {
         name: 'Cairn — Goal Tracker',
         short_name: 'Cairn',
@@ -23,7 +25,13 @@ export default defineConfig({
         display: 'standalone',
         start_url: '/',
         icons: [
-          { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
+          // Scalable icon for browsers that honour SVG.
+          { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+          // Raster fallbacks — Android home-screen shortcuts use these.
+          { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+          { src: '/pwa-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          // Full-bleed maskable art for adaptive icon shapes.
+          { src: '/maskable-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
         ],
       },
     }),

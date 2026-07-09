@@ -7,7 +7,14 @@
       "Bash(npm run *)",
       "Bash(git add *)",
       "Bash(git commit -q -m 'Harden PWA service worker + fix production CORS origin *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(node -e \"require\\('sharp'\\); console.log\\('sharp OK'\\)\")",
+      "Bash(node -e \"require\\('sharp'\\); console.log\\('sharp OK', require\\('sharp'\\).versions?.vips || ''\\)\")",
+      "Bash(node \"/private/tmp/claude-502/-Users-priyadharshan-Desktop-cairn/f7f9ed61-d122-42b8-b940-b4387c2a47a9/scratchpad/gen-icons.mjs\")",
+      "Bash(node /Users/priyadharshan/Desktop/cairn/gen-icons.mjs)",
+      "Bash(node --check src/config/env.js)",
+      "Bash(PORT=9999 node -e \"import\\('./src/config/env.js'\\).then\\(m=>console.log\\('PORT=',m.env.PORT,'\\(expect 4000 from .env\\)'\\)\\)\")",
+      "Bash(NODE_ENV=production MONGO_URI='mongodb://real-prod/db' node -e \"import\\('./src/config/env.js'\\).then\\(m=>console.log\\('MONGO_URI=',m.env.MONGO_URI,'| NODE_ENV=',m.env.NODE_ENV\\)\\)\")"
     ]
   }
 }
