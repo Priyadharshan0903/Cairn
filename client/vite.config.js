@@ -7,6 +7,13 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      workbox: {
+        // Activate a new service worker immediately and drop stale precaches so
+        // an old cached shell can never blank the app after a redeploy.
+        cleanupOutdatedCaches: true,
+        clientsClaim: true,
+        skipWaiting: true,
+      },
       manifest: {
         name: 'Cairn — Goal Tracker',
         short_name: 'Cairn',

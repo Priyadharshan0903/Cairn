@@ -17,7 +17,11 @@ const CLIENT_DIST = path.resolve(__dirname, '../../client/dist');
 export function createApp() {
   const app = express();
 
-  app.use(cors({ origin: env.CLIENT_ORIGIN, credentials: true }));
+  // The SPA is served same-origin in production and authenticates with bearer
+  // tokens (no cookies), so reflecting the request origin is safe and avoids a
+  // stale hard-coded localhost value in production responses. Set CLIENT_ORIGIN
+  // to lock it down if you ever split the frontend onto another domain.
+  app.use(cors({ origin: process.env.CLIENT_ORIGIN || true, credentials: true }));
   app.use(express.json());
 
   app.get('/api/health', (req, res) => res.json({ ok: true, service: 'cairn' }));

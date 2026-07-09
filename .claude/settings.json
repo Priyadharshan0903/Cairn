@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sI https://cairn-production-001.up.railway.app/welcome)",
+      "Bash(curl -sI https://cairn-production-001.up.railway.app/assets/index-k-JqKy52.js)",
+      "Bash(node mobile-check.mjs)",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'Harden PWA service worker + fix production CORS origin *)",
+      "Bash(git push *)"
+    ]
+  }
+}
