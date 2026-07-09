@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth.jsx';
 import { useGoals, useDashboard } from '../hooks/useGoals.js';
 import { StatRow, StatTile } from '../components/StatTile.jsx';
 import { SortableGoalList } from '../components/SortableGoalList.jsx';
+import { QuoteCard } from '../components/QuoteCard.jsx';
 import { longDate, greeting } from '../lib/format.js';
 import './Dashboard.css';
 
@@ -47,6 +48,8 @@ export function Dashboard() {
           </Link>
         </div>
       </header>
+
+      <QuoteCard />
 
       {stats.data && (
         <StatRow>

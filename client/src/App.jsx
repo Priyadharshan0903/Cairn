@@ -11,6 +11,7 @@ import { Trails } from './screens/Trails.jsx';
 import { Profile } from './screens/Profile.jsx';
 import { ThemeSettings } from './screens/ThemeSettings.jsx';
 import { GoPro } from './screens/GoPro.jsx';
+import { Motivation } from './screens/Motivation.jsx';
 
 function FullLoader() {
   return (
@@ -54,6 +55,7 @@ export function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/theme" element={<ThemeSettings />} />
         <Route path="/upgrade" element={<GoPro />} />
+        <Route path="/motivation" element={<Motivation />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

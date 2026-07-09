@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth.jsx';
 import { useTheme } from '../hooks/useTheme.jsx';
+import { usePrefs } from '../hooks/usePrefs.jsx';
+import { TONES } from '../data/quotes.js';
 import { api } from '../lib/api.js';
 import './Profile.css';
 
@@ -10,7 +12,11 @@ const APPEARANCE_LABEL = { light: 'Light', dark: 'Dark', auto: 'Auto' };
 export function Profile() {
   const { user, logout } = useAuth();
   const { theme } = useTheme();
+  const { prefs } = usePrefs();
   const navigate = useNavigate();
+
+  const toneLabel = TONES.find((t) => t.key === prefs.tone)?.label || 'Calm';
+  const motivationValue = prefs.showQuotes ? toneLabel : 'Off';
 
   const initials = (user?.name || '?')
     .split(' ')
@@ -83,6 +89,7 @@ export function Profile() {
         <div className="card settings-list">
           <Row to="/theme" label="Theme" value={STYLE_LABEL[theme.style]} />
           <Row to="/theme" label="Appearance" value={APPEARANCE_LABEL[theme.appearance]} />
+          <Row to="/motivation" label="Motivation" value={motivationValue} />
           <Row label="Reminders" value="8:00 AM" onClick={() => alert('Reminders are coming soon.')} />
         </div>
       </section>

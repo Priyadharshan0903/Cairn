@@ -267,3 +267,32 @@ a {
   border-radius: 10px;
   margin-bottom: 14px;
 }
+
+/* shared quote styling (used by the dashboard QuoteCard and Motivation preview) */
+.quote-mark {
+  position: absolute;
+  top: -14px;
+  left: 14px;
+  font-family: var(--font-serif);
+  font-size: 90px;
+  line-height: 1;
+  color: var(--terracotta);
+  opacity: 0.16;
+  pointer-events: none;
+}
+.quote-text {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.45;
+  font-style: italic;
+  color: var(--ink);
+}
+.quote-by {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+}
