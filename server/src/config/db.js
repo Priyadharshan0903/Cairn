@@ -12,6 +12,13 @@ let memoryServer = null;
 export async function connectDB() {
   let uri = env.MONGO_URI;
 
+  if (!uri && env.NODE_ENV === 'production') {
+    throw new Error(
+      'MONGO_URI is required in production. Set it to your MongoDB connection string ' +
+        '(e.g. a MongoDB Atlas URI or a Railway MongoDB service variable).'
+    );
+  }
+
   if (!uri) {
     const { MongoMemoryServer } = await import('mongodb-memory-server');
     fs.mkdirSync(EMBEDDED_DB_PATH, { recursive: true });

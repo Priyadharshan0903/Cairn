@@ -1,0 +1,16 @@
+# Railway / Nixpacks build config for the Cairn monorepo (single service).
+# Install all workspaces (incl. devDeps so Vite can build) → build the client →
+# start the Express server, which serves both the API and the built SPA.
+
+[phases.setup]
+nixPkgs = ["nodejs_22"]
+
+[phases.install]
+# --include=dev guarantees Vite is present even if NODE_ENV=production is set.
+cmds = ["npm install --include=dev"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm start"
